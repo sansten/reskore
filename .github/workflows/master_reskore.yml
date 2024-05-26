@@ -60,6 +60,7 @@ jobs:
         run: | 
               npm install -g npm@latest
               rm -rf node_modules
+              rm package-lock.json
               npm install
               npm install react-scripts
 
