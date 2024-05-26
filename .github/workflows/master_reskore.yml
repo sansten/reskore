@@ -58,6 +58,8 @@ jobs:
         run: unzip release.zip
       - name: install missing libs
         run: | 
+              npm install -g npm@latest
+              rm -rf node_modules
               npm install
               npm install react-scripts
 
