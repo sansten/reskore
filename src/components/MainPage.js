@@ -1,14 +1,14 @@
 // src/components/MainPage.js  
 import React, { useState } from 'react';  
 import axios from 'axios';  
-import { useMsal } from "@azure/msal-react";  
+//import { useMsal } from "@azure/msal-react";  
   
 const MainPage = () => {  
     const [leftText, setLeftText] = useState("");  
     const [rightText, setRightText] = useState("");  
     const [loading, setLoading] = useState(false);  
     const [result, setResult] = useState(null);  
-    const { accounts } = useMsal();  
+  //  const { accounts } = useMsal();  
   
     const handleApiCall = async () => {  
         setLoading(true);  
