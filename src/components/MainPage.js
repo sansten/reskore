@@ -31,8 +31,9 @@ const MainPage = () => {
                     headers: {  
                         'Ocp-Apim-Subscription-Key': 'YOUR_API_KEY', // Replace with your API key  
                         'Authorization': `Bearer iqQX9WilEXhTufXgyD1bBHZDPLqwLahB`,
+                        'azureml-model-deployment', 'reskore-1'
                         'Access-Control-Allow-Origin': '*',
-                        'access_control_allow_origins':'https://reskore.azurewebsites.net, http://localhost:3000/,azure.com'
+                        "access_control_allow_origins":"https://reskore.azurewebsites.net, http://localhost:3000/,azure.com"
                     }  
                 }  
             );  
