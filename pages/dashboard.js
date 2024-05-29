@@ -96,23 +96,31 @@ export default function Dashboard() {
     const submissionsLeft = DAILY_LIMIT - submissionCount;  
   
     return (  
-        <div className="container">  
-            <h1>reSkore</h1>  
-            <h4>Resume matching score for the given Job description</h4>  
-            <div className="text-area-container">  
+
+        <div>
+        <header class="header">
+        <div class="brand-box">
+          <span class="brand">reskore</span>
+          <span class="heading-primary-sub">Resume matching score for the Job description</span>
+
+        </div>
+            
+      </header>
+       <div className="container">  
+               <div className="text-area-container">  
                 <div className="text-area-box">  
-                    <h2>Resume</h2>  
+                    <h3>Resume</h3>  
                     <textarea  
                         value={leftText}  onChange={(e) => setLeftText(e.target.value)}  
-                        placeholder="Enter resume text"  
+                        placeholder="Copy & paste the resume text"  
                     />  
                 </div>  
                 <div className="text-area-box">  
-                    <h2>Job Description</h2>  
+                    <h3>Job Description</h3>  
                     <textarea  
                         value={rightText}  
                         onChange={(e) => setRightText(e.target.value)}  
-                        placeholder="Enter job description text"  
+                        placeholder="Copy & paste the job description text"  
                     />  
                 </div>  
             </div>  
@@ -126,17 +134,6 @@ export default function Dashboard() {
             {resultData && (  
                 <div className="result">  
                       <ScoreDisplay jsonResponse={resultData.score} />  
-
-                    {/* {resultData.score !== null && (  
-                        <div className="score" style={{ color: getScoreColor(resultData.score) }}>  
-                            {resultData.score}  
-                        </div>  
-                    )}  
-                    <ul className="details">  
-                        {resultData.details.map((detail, index) => (  
-                            <li key={index}>{detail}</li>  
-                        ))}  
-                    </ul>   */}
 
                 </div>  
             )}  
@@ -166,6 +163,7 @@ export default function Dashboard() {
                                 <Footer />  
 
         </div>  
+        </div>
     );  
 }  
   

@@ -4,8 +4,9 @@ import Image from 'next/image'; // Assuming you are using Next.js Image componen
 const Footer = () => {  
     return (  
         <footer style={footerStyle}>  
-            <div style={logoContainerStyle}>  
-                <Image src="/images/sanstenlogo42.png" alt="Company Logo" width={150} height={40} />  
+            <div style={contentStyle}>  
+                <small style={poweredByStyle}>Powered by</small>  
+                <Image src="/images/sanstenlogo42.png" alt="Sansten Logo" width={110} height={30} />  
             </div>  
         </footer>  
     );  
@@ -22,8 +23,16 @@ const footerStyle = {
     boxSizing: 'border-box',  
 };  
   
-const logoContainerStyle = {  
+const contentStyle = {  
+    display: 'flex',  
+    flexDirection: 'column',  
+    alignItems: 'center',  
     marginRight: '10px',  
+};  
+  
+const poweredByStyle = {  
+    fontSize: '10px', // Make the text tiny  
+    marginBottom: '0px', // Add some space between the text and the logo  
 };  
   
 export default Footer;  
