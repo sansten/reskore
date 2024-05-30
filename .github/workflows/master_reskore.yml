@@ -63,7 +63,7 @@ jobs:
               rm package-lock.json
               npm install
               npm install react-scripts
-
+              
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -72,6 +72,8 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7FD2BAFEA3F24CFF8F30342C9BBA7453 }}
 
       - name: 'Deploy to Azure Web App'
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
