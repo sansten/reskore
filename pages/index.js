@@ -30,8 +30,8 @@ export default function Home() {
     return (  
         <div className="container">  
             <div className="content">  
-                <h1>reSkore</h1>  
-                <p>Resume screening agent</p>  
+                <div className="p2">reskore</div>  
+                <p>Resume screening agent, that helps identify the matching profile based on the job description</p>  
                 <button onClick={handleLogin}>Login with Microsoft</button>  
                 <Footer />  
             </div>  

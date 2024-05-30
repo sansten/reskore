@@ -6,7 +6,7 @@ const Footer = () => {
         <footer style={footerStyle}>  
             <div style={contentStyle}>  
                 <small style={poweredByStyle}>Powered by</small>  
-                <Image src="/images/sanstenlogo42.png" alt="Sansten Logo" width={110} height={30} />  
+                <Image src="/images/sanstenlogo42.png" alt="Sansten Logo" width={100} height={30} />  
             </div>  
         </footer>  
     );  

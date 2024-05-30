@@ -1,7 +1,9 @@
 import React, { useState } from 'react';  
+import { StarRating } from "star-ratings-react";
   
 const ScoreDisplay = ({ jsonResponse }) => {  
     const [scoreData, setScoreData] = useState(null);  
+    const [starRating, setstarRating] = useState(0);
 
     React.useEffect(() => {  
         try {  
@@ -19,6 +21,7 @@ const ScoreDisplay = ({ jsonResponse }) => {
                     strength: c_strengths ? (Array.isArray(c_strengths) ? c_strengths : [c_strengths]) : [],  
                     weakness: c_weakness ? (Array.isArray(c_weakness) ? c_weakness : [c_weakness]) : []  
                 });  
+                
             }  
         } catch (error) {  
             console.error('Error parsing JSON:', error);  
@@ -29,10 +32,12 @@ const ScoreDisplay = ({ jsonResponse }) => {
         <div>  
             {scoreData ? (  
                 <div className="details">  
-                    <h3>Score:</h3>  
+                    <center><b>Score: </b> </center>
                     <div className="score" style={{ color: getScoreColor(scoreData.score) }}>  
-                            {scoreData.score}  
-                        </div>  
+                        {scoreData.score}/10
+                    </div>  
+                   <center>  <StarRating rating={scoreData.score} onSetRating={setstarRating} starColor={getScoreColor(scoreData.score)} maxRating={10} size={25} textColor='transparent'/>                        
+                   </center>
                     <p><strong>Summary:</strong> {scoreData.summary}</p>  
                     <p><strong>Strengths:</strong> </p>
                         <ul>  
@@ -54,9 +59,19 @@ const ScoreDisplay = ({ jsonResponse }) => {
             )}  
              <style jsx>{`  
                 .score {  
-                    font-size: 50px;  
+                    font-size: 100px;  
                     text-align: center;  
-                    margin-top: 20px;  
+                    margin-top: 1px;  
+                    letter-spacing: 0.1px;
+                    padding-top: 0%;  
+
+                }
+                .scoreNote {  
+                    font-size: 10px;  
+                    text-align: center;  
+                    margin-top: 1px;  
+                    letter-spacing: 0.1px;
+
                 }  
                 .details {  
                     list-style-type: disc;  
