@@ -15,9 +15,8 @@ export default NextAuth({
         profile: (profile) => ({
           id: profile.sub,
           name: profile.name,
-          email: profile.email,
-          image: profile.picture,
-        }),
+          email: profile.email
+       }),
         wellKnown:
           "https://www.linkedin.com/oauth/.well-known/openid-configuration",
         authorization: {
