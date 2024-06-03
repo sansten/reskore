@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import LogoutButton from "@/components/LogoutButton"; // Import the LogoutButton component  
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/router";  
+import Image from 'next/image'; // Assuming you are using Next.js Image component for optimized images  
 
 const DAILY_LIMIT = 20;  
 const MAX_ALLOWED_RESUME_CHARS=25000
@@ -27,13 +28,10 @@ export const getUserIP = async () => {
 
 export default function Dashboard() {  
     const { data: session, status } = useSession()
-    //const { data: session } = useSession();
-
     const { instance, accounts } = useMsal();  
     const router = useRouter();  
 
-    //const [ esession, setSession ] = session;
-
+ 
     const [leftText, setLeftText] = useState("");  
     const [rightText, setRightText] = useState("");  
     const [leftTextWordCount, setLeftTextWordCount] = useState(0);  
@@ -47,9 +45,7 @@ export default function Dashboard() {
     const [tier, setTier] = useState("");  
 
 
-    //const [cSession, setSession] = useSession();  
-
-
+ 
     useEffect(() => {  
         const fetchUserData = async () => {  
             if (!session)
@@ -80,26 +76,6 @@ export default function Dashboard() {
         fetchUserData();  
     }, [session,router]);  
 
-    // useEffect(() => {  
-    //     const storedCount = parseInt(localStorage.getItem('submissionCount'), 10) || 0;  
-    //     const lastSubmissionDate = localStorage.getItem('lastSubmissionDate');  
-    //     const today = new Date().toISOString().split('T')[0];  
-    //     const email1 = accounts.length > 0 ? accounts[0].username : "Unknown User"  
-    //     setEmail(email1)  
-
-    //     if (lastSubmissionDate !== today) {  
-    //         localStorage.setItem('submissionCount', '0');  
-    //         localStorage.setItem('lastSubmissionDate', today);  
-    //         setSubmissionCount(0);  
-    //     } else {  
-    //         setSubmissionCount(storedCount);  
-    //     }  
-  
-    //     if (storedCount >= DAILY_LIMIT) {  
-    //         setLimitExceeded(true);  
-    //     }  
-    // }, []);  
-  
     const handleSubmit = async () => {  
         if (limitExceeded) {  
             alert("Daily limit exceeded");  
@@ -194,7 +170,9 @@ export default function Dashboard() {
         <div>  
             <header className="header">  
                 <div className="brand-box">  
-                    <span className="brand">reskore</span>  
+                    <span className="brand">
+                    <Image src="/images/logo_trans.png" alt="Sansten Logo" width={200} height={80} />  </span>  
+
                 </div>  
                 <LogoutButton />  
             </header>  

@@ -2,47 +2,25 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useEffect } from "react";  
 import { useRouter } from "next/router";  
 import Footer from "@/components/Footer";  
+import Image from 'next/image'; // Assuming you are using Next.js Image component for optimized images  
   
 export default function Home() {  
     const router = useRouter();  
     const { data: session } = useSession()
-
-    // useEffect(() => {  
-    //     if (accounts.length > 0) {  
-    //         router.push("/dashboard");  
-    //     }  
-  
-    //     // Remove scrollbar when this component is mounted  
-    //     document.body.style.overflow = 'hidden';  
-  
-    //     // Restore scrollbar when this component is unmounted  
-    //     return () => {  
-    //         document.body.style.overflow = 'auto';  
-    //     };  
-    // }, [accounts]);  
-  
-    // const handleLogin = () => {  
-    //     instance.loginPopup().catch(e => {  
-    //         console.error(e);  
-    //     });  
-    // };  
-
     if(session) {
 
         router.push("/dashboard");  
-        // return <>
-        //   Signed in as {session.user.email} <br/>
-        //   <button onClick={() => signOut()}>Sign out</button>
-        // </>
       }
   
     return (  
 
         <div className="container">  
             <div className="content">  
-                <div className="p2">reskore</div>  
+                {/* <div className="p2">reskore</div>   */}
+                <Image src="/images/logo2.png" alt="Sansten Logo" width={200} height={80} />  
                 <p>Resume screening agent, that helps identify the matching profile based on the job description</p>  
                 <button onClick={() => signIn()}>Sign in</button>
+                <p className="p3">Stay assured. We dont store or share the personal information, resume or job description data.</p>
                 {/* <button onClick={handleLogin}>Login with Microsoft</button>   */}
                 <Footer />  
             </div>  
@@ -66,7 +44,7 @@ export default function Home() {
                     left: 0;  
                     width: 100%;  
                     height: 100%;  
-                    background: rgba(255, 255, 255, 0.93); /* 20% opacity */  
+                    background: rgba(255, 255, 255, 0.87); /* 20% opacity */  
                     z-index: 1;  
                 }  
                 .content {  
@@ -92,24 +70,8 @@ export default function Home() {
                 button:hover {  
                     background-color: #0056b3;  
                 }  
+               
             `}</style>  
         </div>  
     );  
 }  
-
-
-
-
-// export default function Component() {
-//   const { data: session } = useSession()
-//   if(session) {
-//     return <>
-//       Signed in as {session.user.email} <br/>
-//       <button onClick={() => signOut()}>Sign out</button>
-//     </>
-//   }
-//   return <>
-//     Not signed in <br/>
-//     <button onClick={() => signIn()}>Sign in</button>
-//   </>
-// }
