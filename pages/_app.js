@@ -1,5 +1,4 @@
 // pages/_app.js  
-import { PublicClientApplication } from "@azure/msal-browser";  
 import { SessionProvider } from "next-auth/react"
 
 import "../styles/globals.css";  
