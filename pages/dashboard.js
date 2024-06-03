@@ -9,7 +9,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/router";  
 import Image from 'next/image'; // Assuming you are using Next.js Image component for optimized images  
 
-const DAILY_LIMIT = 20;  
+const DAILY_LIMIT = 5;  
 const MAX_ALLOWED_RESUME_CHARS=25000
 const MAX_ALLOWED_JD_CHARS=5000
 
@@ -169,7 +169,7 @@ export default function Dashboard() {
             <header className="header">  
                 <div className="brand-box">  
                     <span className="brand">
-                    <Image src="/images/logo_trans.png" alt="Sansten Logo" width={200} height={80} />  </span>  
+                    <Image src="/images/logo_trans.png" priority={true} alt="Sansten Logo" width={200} height={80} />  </span>  
 
                 </div>  
                 <LogoutButton />  

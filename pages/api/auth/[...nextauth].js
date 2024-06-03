@@ -11,15 +11,20 @@ export default NextAuth({
         clientId: process.env.LINKEDIN_CLIENT_ID || "863lgpm5m9c7mc",
         clientSecret: process.env.LINKEDIN_CLIENT_SECRET || "WPL_AP0.ZTzthstKwtpFUK6d.MzM4NTc1NjMzNg==",
         client: { token_endpoint_auth_method: "client_secret_post" },
-        issuer: "https://www.linkedin.com",
+        issuer: "https://www.linkedin.com/oauth",
+        redirectUri: `${process.env.NEXTAUTH_URL}/api/auth/callback/linkedin`,  
         profile: (profile) => ({
           id: profile.sub,
           name: profile.name,
           email: profile.email
        }),
+       token: {
+        url: 'https://www.linkedin.com/oauth/v2/accessToken',
+      },
         wellKnown:
           "https://www.linkedin.com/oauth/.well-known/openid-configuration",
         authorization: {
+          url: 'https://www.linkedin.com/oauth/v2/authorization',
           params: {
             scope: "openid profile email",
           },

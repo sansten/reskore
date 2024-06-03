@@ -17,7 +17,7 @@ export default function Home() {
         <div className="container">  
             <div className="content">  
                 {/* <div className="p2">reskore</div>   */}
-                <Image src="/images/logo2.png" alt="Sansten Logo" width={200} height={80} />  
+                <Image src="/images/logo2.png" priority={true} alt="Sansten Logo" width={200} height={80} />  
                 <p>Resume screening agent, that helps identify the matching profile based on the job description</p>  
                 <button onClick={() => signIn()}>Sign in</button>
                 <p className="p3">Stay assured. We dont store or share the personal information, resume or job description data.</p>
@@ -48,7 +48,8 @@ export default function Home() {
                     z-index: 1;  
                 }  
                 .content {  
-                    position: relative;  
+                    top: 15%;  
+                    position: absolute;  
                     z-index: 2;  
                     text-align: center;  
                     color: #333;  
@@ -61,7 +62,7 @@ export default function Home() {
                     padding: 10px 20px;  
                     font-size: 16px;  
                     color: white;  
-                    background-color: #007bff;  
+                    background-color: #13690e;  
                     border: none;  
                     border-radius: 4px;  
                     cursor: pointer;  
