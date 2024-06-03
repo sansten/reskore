@@ -1,5 +1,4 @@
 // pages/dashboard.js  
-import { useMsal } from "@azure/msal-react";  
 import { useState, useEffect } from "react";  
 import axios from "axios";  
 import Spinner from "../components/Spinner";  
@@ -28,7 +27,6 @@ export const getUserIP = async () => {
 
 export default function Dashboard() {  
     const { data: session, status } = useSession()
-    const { instance, accounts } = useMsal();  
     const router = useRouter();  
 
  
