@@ -6,8 +6,9 @@ import Spinner from "../components/Spinner";
 import ScoreDisplay from '../components/ScoreDisplay';  
 import Footer from "@/components/Footer";  
 import LogoutButton from "@/components/LogoutButton"; // Import the LogoutButton component  
-import { useRouter } from 'next/router';  
-  
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from "next/router";  
+
 const DAILY_LIMIT = 20;  
 const MAX_ALLOWED_RESUME_CHARS=25000
 const MAX_ALLOWED_JD_CHARS=5000
@@ -25,8 +26,13 @@ export const getUserIP = async () => {
 };  
 
 export default function Dashboard() {  
+    const { data: session, status } = useSession()
+    //const { data: session } = useSession();
+
     const { instance, accounts } = useMsal();  
     const router = useRouter();  
+
+    //const [ esession, setSession ] = session;
 
     const [leftText, setLeftText] = useState("");  
     const [rightText, setRightText] = useState("");  
@@ -36,38 +42,43 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(false);  
     const [submissionCount, setSubmissionCount] = useState(0);  
     const [limitExceeded, setLimitExceeded] = useState(false);  
-    const [email, setEmail] = useState("Unknown User");  
+    const [email, setEmail] = useState("");  
     const [maxRequestsPerDay, setMaxRequestsPerDay] = useState(DAILY_LIMIT);  
     const [tier, setTier] = useState("");  
 
 
+    //const [cSession, setSession] = useSession();  
+
+
     useEffect(() => {  
         const fetchUserData = async () => {  
-            const email1 = accounts.length > 0 ? accounts[0].username : "Unknown User";  
-            setEmail(email1);  
-            if (email1=="Unknown User")
+            if (!session)
                 {
                     router.push('/');  
                     return;  
                 }
             try {  
-                const response = await axios.post('/api/getUserHistoryToday', { email: email1 });  
-                const { maxRequestsPerDay, tier, submissionCount } = response.data;  
-  
-                setMaxRequestsPerDay(maxRequestsPerDay);  
-                setTier(tier);  
-                setSubmissionCount(submissionCount);  
-  
-                if (submissionCount >= maxRequestsPerDay) {  
-                    setLimitExceeded(true);  
-                }  
+                if (session)
+                    {
+                        setEmail(session?.user?.email)
+                        const response = await axios.post('/api/getUserHistoryToday', { email: session?.user?.email });  
+                        const { maxRequestsPerDay, tier, submissionCount } = response.data;  
+        
+                        setMaxRequestsPerDay(maxRequestsPerDay);  
+                        setTier(tier);  
+                        setSubmissionCount(submissionCount);  
+        
+                        if (submissionCount >= maxRequestsPerDay) {  
+                            setLimitExceeded(true);  
+                        }  
+                   }
             } catch (error) {  
                 console.error('Error fetching user history:', error);  
             }  
         };  
   
         fetchUserData();  
-    }, [accounts,router]);  
+    }, [session,router]);  
 
     // useEffect(() => {  
     //     const storedCount = parseInt(localStorage.getItem('submissionCount'), 10) || 0;  
@@ -188,7 +199,7 @@ export default function Dashboard() {
                 <LogoutButton />  
             </header>  
             <div className="container">  
-                <span className="heading-primary-sub">Good day {email}!</span>  
+                <span className="heading-primary-sub">Good day {email} !</span>  
                 <span className="heading-primary-sub">Resume matching score for the Job description</span>  
                 <div className="text-area-container">  
                     <div className="text-area-box">  

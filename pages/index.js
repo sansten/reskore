@@ -1,38 +1,49 @@
-import { useMsal } from "@azure/msal-react";  
+import { useSession, signIn, signOut } from "next-auth/react"
 import { useEffect } from "react";  
 import { useRouter } from "next/router";  
 import Footer from "@/components/Footer";  
   
 export default function Home() {  
-    const { instance, accounts } = useMsal();  
     const router = useRouter();  
+    const { data: session } = useSession()
+
+    // useEffect(() => {  
+    //     if (accounts.length > 0) {  
+    //         router.push("/dashboard");  
+    //     }  
   
-    useEffect(() => {  
-        if (accounts.length > 0) {  
-            router.push("/dashboard");  
-        }  
+    //     // Remove scrollbar when this component is mounted  
+    //     document.body.style.overflow = 'hidden';  
   
-        // Remove scrollbar when this component is mounted  
-        document.body.style.overflow = 'hidden';  
+    //     // Restore scrollbar when this component is unmounted  
+    //     return () => {  
+    //         document.body.style.overflow = 'auto';  
+    //     };  
+    // }, [accounts]);  
   
-        // Restore scrollbar when this component is unmounted  
-        return () => {  
-            document.body.style.overflow = 'auto';  
-        };  
-    }, [accounts]);  
-  
-    const handleLogin = () => {  
-        instance.loginPopup().catch(e => {  
-            console.error(e);  
-        });  
-    };  
+    // const handleLogin = () => {  
+    //     instance.loginPopup().catch(e => {  
+    //         console.error(e);  
+    //     });  
+    // };  
+
+    if(session) {
+
+        router.push("/dashboard");  
+        // return <>
+        //   Signed in as {session.user.email} <br/>
+        //   <button onClick={() => signOut()}>Sign out</button>
+        // </>
+      }
   
     return (  
+
         <div className="container">  
             <div className="content">  
                 <div className="p2">reskore</div>  
                 <p>Resume screening agent, that helps identify the matching profile based on the job description</p>  
-                <button onClick={handleLogin}>Login with Microsoft</button>  
+                <button onClick={() => signIn()}>Sign in</button>
+                {/* <button onClick={handleLogin}>Login with Microsoft</button>   */}
                 <Footer />  
             </div>  
             <style jsx>{`  
@@ -85,3 +96,20 @@ export default function Home() {
         </div>  
     );  
 }  
+
+
+
+
+// export default function Component() {
+//   const { data: session } = useSession()
+//   if(session) {
+//     return <>
+//       Signed in as {session.user.email} <br/>
+//       <button onClick={() => signOut()}>Sign out</button>
+//     </>
+//   }
+//   return <>
+//     Not signed in <br/>
+//     <button onClick={() => signIn()}>Sign in</button>
+//   </>
+// }
