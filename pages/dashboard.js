@@ -169,7 +169,7 @@ export default function Dashboard() {
             <header className="header">  
                 <div className="brand-box">  
                     <span className="brand">
-                    <Image src="/images/logo_trans.png" priority={true} alt="Sansten Logo" width={200} height={80} />  </span>  
+                    <Image src="/images/logo_trans.png" priority={true} alt="Sansten Logo" width={180} height={60} />  </span>  
 
                 </div>  
                 <LogoutButton />  
