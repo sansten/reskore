@@ -19,11 +19,11 @@ const LogoutButton = () => {
             <small>Logout</small>
             <style jsx>{`  
                 .logout-button {  
-                    background: none;  
+                    background: black;  
                     border: none;  
                     cursor: pointer;  
                     position: fixed;  
-                    top: 10px;  
+                    top: 3px;  
                     right: 10px;  
                     display: 'flex',  
                     justifyContent: 'flex-end',  

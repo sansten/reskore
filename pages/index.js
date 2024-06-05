@@ -31,8 +31,11 @@ export default function Home() {
                 property="og:description"
                 content="Match resumes to job descriptions instantly! Our AI-powered resume screening app helps you find the perfect candidate faster."
                 />
-                <meta property="og:image" content="https://reskore.sansten.com/_next/image?url=%2Fimages%2Flogo2_small.png&w=120&q=47"/>
-                
+                <meta property="og:image" content="https://reskore.sansten.com/images/logo2_small.png"/>
+                <meta property="og:image:alt" content="About reskore" />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:width" content="100" />
+                <meta property="og:image:height" content="30" />
             </Head>
         </div>
         <div className="container">  
@@ -40,7 +43,8 @@ export default function Home() {
                 {/* <div className="p2">reskore</div>   */}
                 <Image src="/images/logo2.png" priority={true} alt="Sansten Logo" width={200} height={80} />  
                 <p> Resume Screening App : Identify Perfect Candidates Faster by matching profile based on the job description</p>  
-                <button onClick={() => signIn()}>Sign in</button>
+                <p> You will get resume score between 0 to 10 , 10 is the best match 0 is the least. </p>  
+                <button onClick={() => signIn()}>Get started</button>
                 <p className="p3">Stay assured. We dont store or share the personal information, resume or job description data.</p>
                 {/* <button onClick={handleLogin}>Login with Microsoft</button>   */}
                 <Footer />  
@@ -83,7 +87,7 @@ export default function Home() {
                     padding: 10px 20px;  
                     font-size: 16px;  
                     color: white;  
-                    background-color: #13690e;  
+                    background-color: black;  
                     border: none;  
                     border-radius: 4px;  
                     cursor: pointer;  

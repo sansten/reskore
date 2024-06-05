@@ -83,7 +83,7 @@ export default function Dashboard() {
         setMaxRequestsPerDay(DAILY_LIMIT+5);
         setLimitExceeded(false);  
     }
-    
+
     const handleSubmit = async () => {  
         if (limitExceeded) {  
             alert("Daily limit exceeded");  
@@ -179,7 +179,7 @@ export default function Dashboard() {
             <header className="header">  
                 <div className="brand-box">  
                     <span className="brand">
-                    <Image src="/images/logo_trans.png" priority={true} alt="Sansten Logo" width={180} height={60} />  </span>  
+                    <Image src="/images/logo2.png" priority={true} alt="Sansten Logo" width={160} height={60} />  </span>  
 
                 </div>  
                 <LogoutButton />  
@@ -196,7 +196,7 @@ export default function Dashboard() {
                             maxLength={MAX_ALLOWED_RESUME_CHARS}
                             placeholder="Copy & paste the resume text"  
                         />  
-                        <div className="word-count">Chars Count: {leftTextWordCount} / {MAX_ALLOWED_RESUME_CHARS}</div>  
+                        <div className="word-count">Chars Count: {leftTextWordCount} / {MAX_ALLOWED_RESUME_CHARS} (Min required: 500 chars)</div>  
                     </div>  
                     <div className="text-area-box">  
                         <h3>Job Description</h3>  
@@ -206,24 +206,27 @@ export default function Dashboard() {
                             maxLength={MAX_ALLOWED_JD_CHARS}
                             placeholder="Copy & paste the job description text"  
                         />  
-                        <div className="word-count">Chars Count: {rightTextWordCount} / {MAX_ALLOWED_JD_CHARS}</div>  
+                        <div className="word-count"> Chars Count: {rightTextWordCount} / {MAX_ALLOWED_JD_CHARS}  (Min required: 100 chars)</div>  
                     </div>  
                 </div>  
-                <button onClick={handleSubmit} disabled={loading || limitExceeded}>  
+                <button onClick={handleSubmit} disabled={loading || limitExceeded || rightTextWordCount <100 || leftTextWordCount < 500 }>  
                     Score it!  
                 </button>  
                 <div className="submission-info">  
                     {limitExceeded ? "Daily limit exceeded, need 5 more credits for today?. Share us on your linkedin" : `Total daily submissions left: ${submissionsLeft}`}  
                 </div>  
-                <LinkedinShareButton url={'https://reskore.sansten.com/'} onClick={handleMorecredits}>
+                Share us: <LinkedinShareButton url={'https://reskore.sansten.com/'} onClick={handleMorecredits}>
                         <LinkedinIcon size={32} round />
                 </LinkedinShareButton>
+                
                 {loading && <Spinner />}  
                 {resultData && (  
                     <div className="result">  
+                       <p> You will get resume score between 0 to 10 , 10 is the best match 0 is the least. </p>  
                         <ScoreDisplay jsonResponse={resultData.score} />  
                     </div>  
                 )}  
+                <p> For questions & support join our </p> <a href="https://discord.gg/jxctNprA" target="_blank"> discord channel </a> 
                 <style jsx>{`  
                     .score {  
                         font-size: 50px;  
