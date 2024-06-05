@@ -81,10 +81,9 @@ export default function Dashboard() {
 
     const handleMorecredits = async () => {  
         setMaxRequestsPerDay(DAILY_LIMIT+5);
-        setSubmissionCount(5);  
         setLimitExceeded(false);  
-
     }
+    
     const handleSubmit = async () => {  
         if (limitExceeded) {  
             alert("Daily limit exceeded");  
