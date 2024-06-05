@@ -8,7 +8,12 @@ import LogoutButton from "@/components/LogoutButton"; // Import the LogoutButton
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/router";  
 import Image from 'next/image'; // Assuming you are using Next.js Image component for optimized images  
-
+import {
+    LinkedinShareButton,
+    LinkedinIcon,
+  } from 'next-share'
+  
+  
 const DAILY_LIMIT = 5;  
 const MAX_ALLOWED_RESUME_CHARS=25000
 const MAX_ALLOWED_JD_CHARS=5000
@@ -74,6 +79,12 @@ export default function Dashboard() {
         fetchUserData();  
     }, [session,router]);  
 
+    const handleMorecredits = async () => {  
+        setMaxRequestsPerDay(DAILY_LIMIT+5);
+        setSubmissionCount(5);  
+        setLimitExceeded(false);  
+
+    }
     const handleSubmit = async () => {  
         if (limitExceeded) {  
             alert("Daily limit exceeded");  
@@ -203,8 +214,11 @@ export default function Dashboard() {
                     Score it!  
                 </button>  
                 <div className="submission-info">  
-                    {limitExceeded ? "Daily limit exceeded" : `Total daily submissions left: ${submissionsLeft}`}  
+                    {limitExceeded ? "Daily limit exceeded, need 5 more credits for today?. Share us on your linkedin" : `Total daily submissions left: ${submissionsLeft}`}  
                 </div>  
+                <LinkedinShareButton url={'https://reskore.sansten.com/'} onClick={handleMorecredits}>
+                        <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
                 {loading && <Spinner />}  
                 {resultData && (  
                     <div className="result">  
