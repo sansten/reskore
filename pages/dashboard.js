@@ -226,7 +226,7 @@ export default function Dashboard() {
                         <ScoreDisplay jsonResponse={resultData.score} />  
                     </div>  
                 )}  
-                <p> For questions & support join our </p> <a href="https://discord.gg/jxctNprA" target="_blank"> discord channel </a> 
+                
                 <style jsx>{`  
                     .score {  
                         font-size: 50px;  

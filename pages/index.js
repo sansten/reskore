@@ -42,8 +42,9 @@ export default function Home() {
             <div className="content">  
                 {/* <div className="p2">reskore</div>   */}
                 <Image src="/images/logo2.png" priority={true} alt="Sansten Logo" width={200} height={80} />  
-                <p> Resume Screening App : Identify Perfect Candidates Faster by matching profile based on the job description</p>  
-                <p> You will get resume score between 0 to 10 , 10 is the best match 0 is the least. </p>  
+                <p><b> Resume Screening App </b> </p>
+                <p style={{marginLeft:'20px' , marginRight:'20px', fontSize:'12px'  }}> Identify Perfect Candidates Faster by matching profile based on the job description, You will get resume score between 0 to 10 , 10 is the best match 0 is the least.</p>  
+
                 <button onClick={() => signIn()}>Get started</button>
                 <p className="p3">Stay assured. We dont store or share the personal information, resume or job description data.</p>
                 {/* <button onClick={handleLogin}>Login with Microsoft</button>   */}
