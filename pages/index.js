@@ -31,7 +31,7 @@ export default function Home() {
                 property="og:description"
                 content="Match resumes to job descriptions instantly! Our AI-powered resume screening app helps you find the perfect candidate faster."
                 />
-                <meta property="og:image" content="https://reskore.sansten.com/images/logo2_small.png"/>
+                <meta property="og:image" content="https://reskore.sansten.com/images/logo_big.png"/>
                 <meta property="og:image:alt" content="About reskore" />
                 <meta property="og:image:type" content="image/png" />
                 <meta property="og:image:width" content="100" />
