@@ -19,7 +19,7 @@ jobs:
     - name: Remove old artifacts
       uses: c-hive/gha-remove-artifacts@v1
       with:
-        age: '90 days' # '<number> 
+        age: '1 days' # '<number> 
   build:
     runs-on: ubuntu-latest
     permissions: write-all
