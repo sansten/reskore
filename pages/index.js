@@ -20,7 +20,6 @@ export default function Home() {
                 <title>
                       Identify Perfect Candidates Faster: Resume Screening App
                 </title>
-              <!-- Google / Search Engine Tags -->
                 <meta itemprop="name" content="Identify Perfect Candidates Faster: Resume Screening App">
                 <meta itemprop="description" content="Match resumes to job descriptions instantly! Our AI-powered resume screening app helps you find the perfect candidate faster.">
                 <meta itemprop="image" content="http://reskore.sansten.com/images/logo_big.png">
