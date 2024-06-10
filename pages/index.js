@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container">  
             <div className="content">  
                 {/* <div className="p2">reskore</div>   */}
-                <Image src="/images/logo_big.png" priority={true} alt="Sansten Logo" width={200} height={80} />  
+                <Image src="/images/logo_big.png" priority={true} alt="Sansten Logo" width={300} height={140} />  
                 <p><b> Resume Screening App </b> </p>
                 <p style={{marginLeft:'20px' , marginRight:'20px', fontSize:'12px'  }}> Identify Perfect Candidates Faster by matching profile based on the job description, You will get resume score between 0 to 10 , 10 is the best match 0 is the least.</p>  
 
